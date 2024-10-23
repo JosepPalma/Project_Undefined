@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxsjvb1w6jwfd"]
+
+[ext_resource type="Script" path="res://scenes/items/gem.gd" id="1_hi0m6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qexsd"]
+cull_mode = 1
+albedo_color = Color(0.501961, 0.74902, 1, 1)
+roughness = 0.2
+emission = Color(0, 0.25098, 0.443137, 1)
+emission_energy_multiplier = 11.0
+normal_scale = -0.35
+backlight_enabled = true
+backlight = Color(0.501961, 0.74902, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nadom"]
+material = SubResource("StandardMaterial3D_qexsd")
+height = 1.5
+radial_segments = 4
+rings = 1
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4tdw8"]
+points = PackedVector3Array(0, 0.75, 0, 0.5, 0, 0, 0, -0.75, 0, 0, 0, 0.5, -0.5, 0, 0, 0, 0, -0.5)
+
+[node name="Gem" type="StaticBody3D" groups=["Gems"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0)
+collision_layer = 3
+script = ExtResource("1_hi0m6")
+
+[node name="GemBody" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_nadom")
+
+[node name="GemCollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_4tdw8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0, 0.486275, 0.831373, 1)
+light_energy = 2.0
+omni_attenuation = 0.707107

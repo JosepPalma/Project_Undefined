@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn51g6ddmr0ff"]
+
+[ext_resource type="Script" path="res://assets/player/player.gd" id="1_a6ha5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2jrlw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gny5e"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, 0)
+script = ExtResource("1_a6ha5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_2jrlw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_gny5e")
+
+[node name="NeckPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+
+[node name="Camera3D" type="Camera3D" parent="NeckPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.1, 0)
+fov = 90.0

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8cwxb35j1o8t"]
+
+[ext_resource type="PackedScene" uid="uid://b1lad01hrhekf" path="res://assets/blender/genericRoom.blend" id="3_iws3g"]
+[ext_resource type="PackedScene" uid="uid://cwyov7xrflt4f" path="res://assets/blender/genericWall.blend" id="4_ihx4c"]
+[ext_resource type="PackedScene" uid="uid://8hrw2l1vhc3s" path="res://scenes/items/elevator.tscn" id="5_3i2ln"]
+[ext_resource type="PackedScene" uid="uid://cn51g6ddmr0ff" path="res://scenes/entities/player/player.tscn" id="6_0just"]
+
+[node name="Spawn" type="Node3D"]
+
+[node name="Elevator" parent="." instance=ExtResource("5_3i2ln")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("6_0just")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.75)
+
+[node name="genericRoom" parent="." instance=ExtResource("3_iws3g")]
+
+[node name="genericWall" parent="." instance=ExtResource("4_ihx4c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="genericWall2" parent="." instance=ExtResource("4_ihx4c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="genericWall3" parent="." instance=ExtResource("4_ihx4c")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

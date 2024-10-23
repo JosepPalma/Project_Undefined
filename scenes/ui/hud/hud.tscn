@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnwdvgt0gpm7w"]
+
+[ext_resource type="Theme" uid="uid://dujxhncyvd71r" path="res://config/ui_theme.tres" id="1_ahsdv"]
+[ext_resource type="Texture2D" uid="uid://k3qu2fwlfxk2" path="res://resources/hud/gem_image.png" id="1_elq06"]
+[ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_557ai"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j273q"]
+bg_color = Color(1, 1, 1, 0.588235)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ahsdv")
+script = ExtResource("2_557ai")
+
+[node name="HealthBar" type="GridContainer" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 478.0
+offset_bottom = -20.0
+grow_vertical = 0
+columns = 3
+
+[node name="HP0" type="ColorRect" parent="HealthBar"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HP1" type="ColorRect" parent="HealthBar"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="HP2" type="ColorRect" parent="HealthBar"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="Score" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -100.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GemIcon" type="TextureRect" parent="Score"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_elq06")
+expand_mode = 1
+
+[node name="ScoreLabel" type="Label" parent="Score"]
+layout_mode = 2
+text = "0"
+
+[node name="HitMarker" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j273q")

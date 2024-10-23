@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2gvlwr4v6mbh"]
+
+[ext_resource type="PackedScene" uid="uid://cmftcdmkcoart" path="res://assets/blender/entranceRoom.blend" id="2_ymg13"]
+[ext_resource type="PackedScene" uid="uid://cxsjvb1w6jwfd" path="res://scenes/items/gem.tscn" id="5_btttb"]
+
+[node name="GemRoom" type="Node3D"]
+
+[node name="Gem" parent="." instance=ExtResource("5_btttb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -1, 0.296, 1)
+
+[node name="entranceRoom" parent="." instance=ExtResource("2_ymg13")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlg602nnrfatj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ywd2"]
+size = Vector3(70, 1, 70)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uti8k"]
+size = Vector3(70, 1, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8dpjk"]
+size = Vector3(25, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgltg"]
+size = Vector3(25, 1, 50)
+
+[node name="Playground" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="Level1Ground" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062479, -1.04113, 0.13105)
+mesh = SubResource("BoxMesh_2ywd2")
+
+[node name="Level1CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062479, -1.04113, 0.13105)
+shape = SubResource("BoxShape3D_uti8k")
+
+[node name="Level2Ground" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4316, -0.041, -9.86377)
+mesh = SubResource("BoxMesh_8dpjk")
+
+[node name="Level2CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4316, -0.041, -9.86377)
+shape = SubResource("BoxShape3D_jgltg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26, 0)

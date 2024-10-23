@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkenatoolx8j8"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_okvoh"]
+[ext_resource type="PackedScene" uid="uid://ddpqdqmfih1wl" path="res://scenes/maps/blenderTestMap.tscn" id="2_wp83w"]
+[ext_resource type="Script" path="res://scenes/main/gems.gd" id="5_52cwt"]
+[ext_resource type="PackedScene" uid="uid://cnwdvgt0gpm7w" path="res://scenes/ui/hud/hud.tscn" id="5_ja4dh"]
+
+[node name="Main" type="Node"]
+process_mode = 1
+script = ExtResource("1_okvoh")
+
+[node name="BlenderTestMap" parent="." instance=ExtResource("2_wp83w")]
+
+[node name="Gems" type="Node" parent="."]
+script = ExtResource("5_52cwt")
+
+[node name="HUD" parent="." instance=ExtResource("5_ja4dh")]
+process_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15, 19, 10)

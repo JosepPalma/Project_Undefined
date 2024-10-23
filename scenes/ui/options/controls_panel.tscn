@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://w77a632hko6f"]
+
+[ext_resource type="Theme" uid="uid://dujxhncyvd71r" path="res://config/ui_theme.tres" id="1_ex31c"]
+[ext_resource type="StyleBox" uid="uid://pgayd33343ls" path="res://config/solid_panel_style_box.tres" id="2_doas6"]
+[ext_resource type="Script" path="res://scenes/ui/options/controls_panel.gd" id="3_wmrkk"]
+
+[node name="ControlsPanel" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -360.0
+offset_right = 325.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ex31c")
+theme_override_styles/panel = ExtResource("2_doas6")
+script = ExtResource("3_wmrkk")
+
+[node name="returnBtn" type="Button" parent="."]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 81.0
+offset_bottom = 95.0
+text = "←"
+
+[node name="ControlsTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 50.0
+offset_right = 92.0
+offset_bottom = 117.0
+grow_horizontal = 2
+text = "Controls"
+
+[node name="Keybinds" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.5
+offset_top = -175.0
+offset_right = 279.5
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Action" type="Label" parent="Keybinds"]
+layout_mode = 2
+text = "Move forward:
+Move right:
+Move left:
+Move backwards:
+Jump:
+Interact:
+Pause:"
+
+[node name="Key" type="Label" parent="Keybinds"]
+layout_mode = 2
+text = "W
+D
+A
+S
+Space
+E
+Esc"
+
+[connection signal="pressed" from="returnBtn" to="." method="_on_return_btn_pressed"]

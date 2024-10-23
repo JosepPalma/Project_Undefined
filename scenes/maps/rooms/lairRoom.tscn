@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b48vospek7mqj"]
+
+[ext_resource type="PackedScene" uid="uid://cmftcdmkcoart" path="res://assets/blender/entranceRoom.blend" id="2_en83c"]
+[ext_resource type="PackedScene" uid="uid://1xg5o0w6xkqv" path="res://scenes/entities/enemy/monster.tscn" id="5_3hqkg"]
+
+[node name="Lair" type="Node3D"]
+
+[node name="Monster" parent="." instance=ExtResource("5_3hqkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.185)
+
+[node name="entranceRoom" parent="." instance=ExtResource("2_en83c")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

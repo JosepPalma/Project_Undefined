@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp0poliwnqvhu"]
+
+[ext_resource type="Theme" uid="uid://dujxhncyvd71r" path="res://config/ui_theme.tres" id="1_iiieg"]
+[ext_resource type="Script" path="res://scenes/ui/main/main_menu.gd" id="2_4kacn"]
+[ext_resource type="Texture2D" uid="uid://0yihvvep74id" path="res://resources/menu/Project_Undefined_Background.png" id="3_m5uji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6ooq"]
+bg_color = Color(0.218061, 0.218061, 0.218061, 0.498039)
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iiieg")
+script = ExtResource("2_4kacn")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_m5uji")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f6ooq")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.5
+offset_top = 100.0
+offset_right = 200.5
+offset_bottom = 167.0
+grow_horizontal = 2
+text = "Project_Undefined"
+
+[node name="ButtonHolder" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -162.5
+offset_right = 150.0
+offset_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="PlayBtn" type="Button" parent="Panel/ButtonHolder"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsBtn" type="Button" parent="Panel/ButtonHolder"]
+layout_mode = 2
+text = "Options"
+
+[node name="ExitBtn" type="Button" parent="Panel/ButtonHolder"]
+layout_mode = 2
+text = "Exit Game"
+
+[connection signal="pressed" from="Panel/ButtonHolder/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="Panel/ButtonHolder/OptionsBtn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="Panel/ButtonHolder/ExitBtn" to="." method="_on_exit_btn_pressed"]

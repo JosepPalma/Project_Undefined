@@ -1,0 +1,180 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt612s7krrjoa"]
+
+[ext_resource type="Theme" uid="uid://dujxhncyvd71r" path="res://config/ui_theme.tres" id="1_hmf6h"]
+[ext_resource type="Script" path="res://scenes/ui/options/options_menu.gd" id="2_3pc21"]
+[ext_resource type="PackedScene" uid="uid://w77a632hko6f" path="res://scenes/ui/options/controls_panel.tscn" id="2_jq7vr"]
+[ext_resource type="StyleBox" uid="uid://pgayd33343ls" path="res://config/solid_panel_style_box.tres" id="2_wskkg"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -360.0
+offset_right = 300.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hmf6h")
+script = ExtResource("2_3pc21")
+
+[node name="Menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_wskkg")
+
+[node name="returnBtn" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 95.0
+offset_bottom = 95.0
+text = "←"
+
+[node name="OptionsTitle" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 65.0
+offset_right = 87.0
+offset_bottom = 132.0
+grow_horizontal = 2
+text = "Options
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.5
+offset_top = -175.0
+offset_right = 232.5
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="GridContainer" type="GridContainer" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="ResolutionLabel" type="Label" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Resolution:"
+
+[node name="ResolutionOptBtn" type="OptionButton" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1920×1080"
+popup/item_1/id = 1
+popup/item_2/text = "2560×1440"
+popup/item_2/id = 2
+
+[node name="FramerateLabel" type="Label" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Max FPS:"
+
+[node name="FramerateOptBtn" type="OptionButton" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+item_count = 4
+selected = 1
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "120"
+popup/item_2/id = 2
+popup/item_3/text = "144"
+popup/item_3/id = 3
+
+[node name="SensitivityLabel" type="Label" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Sensitivity:"
+
+[node name="SensitivityControl" type="HBoxContainer" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="SensitivitySlider" type="HSlider" parent="Menu/VBoxContainer/GridContainer/SensitivityControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+value = 50.0
+
+[node name="SensitivitySliderLabel" type="Label" parent="Menu/VBoxContainer/GridContainer/SensitivityControl"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="FOVLabel" type="Label" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "FOV:"
+
+[node name="FOVControl" type="HBoxContainer" parent="Menu/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="FOVSlider" type="HSlider" parent="Menu/VBoxContainer/GridContainer/FOVControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 80.0
+max_value = 120.0
+value = 90.0
+
+[node name="FOVSliderLabel" type="Label" parent="Menu/VBoxContainer/GridContainer/FOVControl"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="ControlsBtn" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Controls"
+
+[node name="ApplyBtn" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -100.0
+offset_right = -26.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+disabled = true
+text = "Apply"
+
+[node name="ControlsPanel" parent="." instance=ExtResource("2_jq7vr")]
+visible = false
+layout_mode = 1
+offset_top = -350.0
+offset_bottom = 350.0
+
+[connection signal="pressed" from="Menu/returnBtn" to="." method="_on_return_btn_pressed"]
+[connection signal="item_selected" from="Menu/VBoxContainer/GridContainer/ResolutionOptBtn" to="." method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="Menu/VBoxContainer/GridContainer/FramerateOptBtn" to="." method="_on_fps_item_selected"]
+[connection signal="drag_ended" from="Menu/VBoxContainer/GridContainer/SensitivityControl/SensitivitySlider" to="." method="_on_sensitivity_slider_drag_ended"]
+[connection signal="value_changed" from="Menu/VBoxContainer/GridContainer/SensitivityControl/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="drag_ended" from="Menu/VBoxContainer/GridContainer/FOVControl/FOVSlider" to="." method="_on_fov_slider_drag_ended"]
+[connection signal="value_changed" from="Menu/VBoxContainer/GridContainer/FOVControl/FOVSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="pressed" from="Menu/VBoxContainer/ControlsBtn" to="." method="_on_controls_btn_pressed"]
+[connection signal="pressed" from="Menu/ApplyBtn" to="." method="_on_apply_btn_pressed"]

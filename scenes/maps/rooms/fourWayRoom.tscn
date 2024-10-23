@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://chgh1njvw2kg6"]
+
+[ext_resource type="PackedScene" uid="uid://br6qaabffqrdg" path="res://assets/blender/fourWayRoom.blend" id="1_7gpp1"]
+
+[node name="FourWayRoom" type="Node3D"]
+
+[node name="fourWayRoom" parent="." instance=ExtResource("1_7gpp1")]

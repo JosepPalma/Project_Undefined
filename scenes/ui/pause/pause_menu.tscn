@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://dod4cpql76nk6"]
+
+[ext_resource type="Theme" uid="uid://dujxhncyvd71r" path="res://config/ui_theme.tres" id="1_w4d8g"]
+[ext_resource type="Script" path="res://scenes/ui/pause/pause_menu.gd" id="2_a75ax"]
+[ext_resource type="StyleBox" uid="uid://pgayd33343ls" path="res://config/solid_panel_style_box.tres" id="3_xopci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxomq"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w4d8g")
+script = ExtResource("2_a75ax")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxomq")
+
+[node name="Menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -360.0
+offset_right = 300.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_xopci")
+
+[node name="PauseLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.5
+offset_top = 80.0
+offset_right = 77.5
+offset_bottom = 147.0
+grow_horizontal = 2
+text = "Pause"
+
+[node name="ButtonHandler" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -110.0
+offset_right = 125.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="ResumeBtn" type="Button" parent="Menu/ButtonHandler"]
+layout_mode = 2
+text = "Resume"
+
+[node name="OptionsBtn" type="Button" parent="Menu/ButtonHandler"]
+layout_mode = 2
+text = "Options"
+
+[node name="ExitBtn" type="Button" parent="Menu/ButtonHandler"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="Menu/ButtonHandler/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Menu/ButtonHandler/OptionsBtn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="Menu/ButtonHandler/ExitBtn" to="." method="_on_exit_btn_pressed"]

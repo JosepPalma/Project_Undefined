@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpl3xcxvylc7m"]
+
+[ext_resource type="PackedScene" uid="uid://bqsfc3o8eoad4" path="res://assets/blender/corridorRoom.blend" id="1_tn386"]
+
+[node name="CorridorRoom" type="Node3D"]
+
+[node name="corridorRoom" parent="." instance=ExtResource("1_tn386")]

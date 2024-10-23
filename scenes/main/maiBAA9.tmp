@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkenatoolx8j8"]
+
+[ext_resource type="Script" path="res://scenes/game/main/main.gd" id="1_okvoh"]
+[ext_resource type="PackedScene" uid="uid://d4ddc8mwkcqpu" path="res://scenes/game/maps/navigation_playground.tscn" id="2_0at4d"]
+[ext_resource type="PackedScene" uid="uid://cn51g6ddmr0ff" path="res://scenes/entities/player/player.tscn" id="2_wgf23"]
+[ext_resource type="PackedScene" uid="uid://1xg5o0w6xkqv" path="res://scenes/entities/enemy/monster.tscn" id="3_qauxt"]
+[ext_resource type="PackedScene" uid="uid://cnwdvgt0gpm7w" path="res://scenes/ui/hud/hud.tscn" id="5_ja4dh"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_okvoh")
+
+[node name="Game" type="Node3D" parent="."]
+process_mode = 1
+
+[node name="Player" parent="Game" instance=ExtResource("2_wgf23")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 7, 1.09259, 7)
+
+[node name="NavigationPlayground" parent="Game" instance=ExtResource("2_0at4d")]
+
+[node name="Monster" parent="Game" instance=ExtResource("3_qauxt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1, 2)
+
+[node name="HUD" parent="." instance=ExtResource("5_ja4dh")]

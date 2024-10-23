@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://br5ke1pt1wmxo"]
+
+[ext_resource type="Script" path="res://scenes/maps/ProceduralMap.gd" id="1_lk2wf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eyh25"]
+sky_top_color = Color(0.246421, 0.35149, 0.48121, 1)
+sky_horizon_color = Color(0.611605, 0.630123, 0.653553, 1)
+ground_horizon_color = Color(0.611605, 0.630123, 0.653553, 1)
+
+[sub_resource type="Sky" id="Sky_3vxrg"]
+sky_material = SubResource("ProceduralSkyMaterial_eyh25")
+
+[sub_resource type="Environment" id="Environment_4pc4f"]
+background_mode = 2
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_3vxrg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_xtydq"]
+cell_size = 0.5
+edge_max_error = 1.0
+
+[node name="ProceduralMap" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4pc4f")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_xtydq")
+navigation_layers = 3
+script = ExtResource("1_lk2wf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 50, 0)
+visible = false
